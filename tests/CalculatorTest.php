@@ -1,7 +1,7 @@
 <?php
 
-namespace Codemahs\PaypalSdk\Test;
-use Codemahs\PaypalSdk\Calculator;
+namespace Codemahs\Mt5\Test;
+use Codemahs\Mt5\Calculator;
 use PHPUnit\Framework\TestCase;
 
 class CalculatorTest extends TestCase

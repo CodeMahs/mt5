@@ -1,6 +1,6 @@
 <?php
 
-namespace Codemahs\PaypalSdk;
+namespace Codemahs\Mt5;
 
 class Calculator {
     public function add($a, $b) {
