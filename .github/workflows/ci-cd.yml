@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [develop]
     branches: [main]
-jobs:
+jobs: 
   ci_to_master:
     runs-on: ubuntu-latest
     steps: 
