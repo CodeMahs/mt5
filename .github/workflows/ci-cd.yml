@@ -11,7 +11,7 @@ jobs:
         with:
           php_version: '8.0'
       - name: Directory Permissions
-        run: chmod -R 777 storage vendor
+        run: sudo chmod -R 755 storage/
       - name: Install Dependencies
         run: composer install --no-interaction
       - name: 'Execute tests (Unit) via phpcs' 
