@@ -9,7 +9,7 @@ class CalculatorTest extends TestCase
     public function testAdd()
     {
         $calculator = new Calculator();
-        $sum = $calculator->add(1, 2);
+        $sum = $calculator->add(1, 'a');
         $this->assertSame(3, $sum);
     }
 
