@@ -7,17 +7,17 @@ on:
 
 jobs:
   ci_to_master:
-  runs-on: ubuntu-latest
-  steps: 
-    - uses: actions/checkout@v2
-    - uses: php-actions/composer@v6
-      with:
-        php_version: '8.0'
-    - name: Install Dependencies
-      run: composer install --no-interaction
-    - name: 'Execute tests (Unit) via phpcs' 
-      run: composer phpcs-auto-check-project
-    - name: 'Execute tests (Unit) via PHPUnit' 
-      run: composer phpunit
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v6
+        with:
+          php_version: '8.0'
+      - name: Install Dependencies
+        run: composer install --no-interaction
+      - name: 'Execute tests (Unit) via phpcs' 
+        run: composer phpcs-auto-check-project
+      - name: 'Execute tests (Unit) via PHPUnit' 
+        run: composer phpunit
 
 
