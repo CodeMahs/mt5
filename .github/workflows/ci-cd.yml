@@ -1,8 +1,12 @@
 name: continuous integration php
 on: 
+  push:
+    branches: [develop]
+    branches: [main]
   pull_request:
-    branches: [master]
-jobs:
+    branches: [develop]
+    branches: [main]
+jobs: 
   ci_to_master:
     runs-on: ubuntu-latest
     steps: 
@@ -10,13 +14,14 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_version: '8.0'
-      - name: Directory Permissions
-        run: chmod -R 777 storage vendor
-      - name: Install Dependencies
-        run: composer install --no-interaction
+      - name: 'Install Dependencies'
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: 'Execute tests (Unit) via phpcs' 
         run: composer phpcs-auto-check-project
       - name: 'Execute tests (Unit) via PHPUnit' 
         run: composer phpunit
+
+
+
 
 
