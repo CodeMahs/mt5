@@ -1,0 +1,28 @@
+name: continuous integration php
+on: 
+  pull_request:
+    branches: [master]
+    branches: [develop]
+
+jobs:
+  ci_to_master:
+  runs-on: ubuntu-latest
+  steps: 
+    - uses: actions/checkout@v2
+    - uses: php-actions/composer@v6
+      with:
+        php_version:
+          - 7.4
+          - 8.0
+
+        directories:
+          - vendor
+
+        before_script:
+          - composer install --no-interaction
+
+        script:
+          - composer phpcs-auto-check-project
+          - composer phpunit
+
+
