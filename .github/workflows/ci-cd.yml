@@ -2,9 +2,7 @@ name: continuous integration php
 on: 
   push:
     branches: [develop]
-    branches: [main]
   pull_request:
-    branches: [develop]
     branches: [main]
 jobs: 
   ci_to_master:
@@ -15,7 +13,7 @@ jobs:
         with:
           php_version: '8.0'
       - name: 'Install Dependencies'
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        run: sudo composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: 'Execute tests (Unit) via phpcs' 
         run: composer phpcs-auto-check-project
       - name: 'Execute tests (Unit) via PHPUnit' 
