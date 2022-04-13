@@ -2,7 +2,6 @@ name: continuous integration php
 on: 
   push:
     branches: [develop]
-  pull_request:
     branches: [master]
 jobs:
   ci_to_master:
