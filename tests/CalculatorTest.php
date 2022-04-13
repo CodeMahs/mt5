@@ -1,6 +1,7 @@
 <?php
 
 namespace Codemahs\Mt5\Test;
+
 use Codemahs\Mt5\Calculator;
 use PHPUnit\Framework\TestCase;
 
@@ -12,5 +13,4 @@ class CalculatorTest extends TestCase
         $sum = $calculator->add(1, 2);
         $this->assertSame(3, $sum);
     }
-
 }
