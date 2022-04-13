@@ -8,21 +8,19 @@ jobs:
   ci_to_master:
     runs-on: ubuntu-latest
     steps: 
-    with:
-        php_version: '8.0'
-    - uses: actions/checkout@v2
-    - uses: php-actions/composer@v6
-    - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"auth.json
-    - name: Install Dependencies
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v6
+        with:
+          php_version: '8.0'
+      - name: 'Permissions'
+        run: sudo /home/runner/work/mt5/mt5/vendor/ pub get
+        
+      - name: 'Install Dependencies'
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-    
-    - name: Directory Permissions
-      run: chmod -R 777 storage bootstrap/cache
-    - name: 'Execute tests (Unit) via phpcs' 
-      run: composer phpcs-auto-check-project
-    - name: 'Execute tests (Unit) via PHPUnit' 
-      run: composer phpunit
+      - name: 'Execute tests (Unit) via phpcs' 
+        run: composer phpcs-auto-check-project
+      - name: 'Execute tests (Unit) via PHPUnit' 
+        run: composer phpunit
 
 
 
