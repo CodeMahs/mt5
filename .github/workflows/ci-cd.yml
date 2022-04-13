@@ -1,8 +1,9 @@
 name: continuous integration php
 on: 
+  push:
+    branches: [develop]
   pull_request:
     branches: [master]
-    branches: [develop]
 
 jobs:
   ci_to_master:
@@ -11,18 +12,12 @@ jobs:
     - uses: actions/checkout@v2
     - uses: php-actions/composer@v6
       with:
-        php_version:
-          - 7.4
-          - 8.0
-
-        directories:
-          - vendor
-
-        before_script:
-          - composer install --no-interaction
-
-        script:
-          - composer phpcs-auto-check-project
-          - composer phpunit
+        php_version: '8.0'
+    - name: Install Dependencies
+      run: composer install --no-interaction
+    - name: 'Execute tests (Unit) via phpcs' 
+      run: composer phpcs-auto-check-project
+    - name: 'Execute tests (Unit) via PHPUnit' 
+      run: composer phpunit
 
 
