@@ -1,5 +1,7 @@
 name: continuous integration php
 on: 
+  push:
+    branches: [develop]
   pull_request:
     branches: [master]
 jobs:
@@ -10,8 +12,8 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_version: '8.0'
-      - name: Directory Permissions
-        run: sudo chmod -R 755 storage/
+      - name: Permissions
+        run:  sudo chmod -R 755 storage/
       - name: Install Dependencies
         run: composer install --no-interaction
       - name: 'Execute tests (Unit) via phpcs' 
